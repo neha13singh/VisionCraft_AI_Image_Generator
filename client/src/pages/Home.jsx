@@ -6,33 +6,56 @@ import { GetPosts } from "../api";
 import { CircularProgress } from "@mui/material";
 
 const Container = styled.div`
-  padding: 30px 30px;
+  padding: 30px 5%;
   padding-bottom: 200px;
   height: 100%;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  @media (max-width: 768px) {
-    padding: 6px 10px;
+  gap: 40px;
+  background: ${({ theme }) => theme.bg};
+  width: 100%;
+  max-width: 100vw;
+  
+  &::-webkit-scrollbar {
+    width: 8px;
   }
-  background: ${({ theme }) => theme.background};
+  
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.bgLight};
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.primary};
+    border-radius: 4px;
+  }
 `;
 
 const HeadLine = styled.div`
-  font-size: 34px;
-  font-weight: 500;
+  font-size: 48px;
+  font-weight: 800;
   color: ${({ theme }) => theme.text_primary};
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  text-align: center;
+  margin-top: 40px;
+  line-height: 1.2;
+  
+  span {
+    background: linear-gradient(135deg, ${({ theme }) => theme.primary}, ${({ theme }) => theme.secondary});
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `;
 
 const Span = styled.div`
-  font-size: 30px;
-  font-weight: 800;
-  color: ${({ theme }) => theme.secondary};
+  font-size: 32px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.primary};
+  margin-top: 8px;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -46,18 +69,21 @@ const Wrapper = styled.div`
 
 const CardWrapper = styled.div`
   display: grid;
-  gap: 20px;
-
+  gap: 24px;
+  width: 100%;
+  max-width: 1400px;
+  padding: 0 16px;
+  
   @media (min-width: 1200px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 
   @media (min-width: 640px) and (max-width: 1199px) {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   }
 
   @media (max-width: 639px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   }
 `;
 
@@ -105,8 +131,8 @@ const Home = () => {
   return (
     <Container>
       <HeadLine>
-        Explore popular posts in the Community!
-        <Span>⦾ Generated with AI ⦾</Span>
+        Welcome to <span>ImageForge</span>
+        <Span>Where AI Meets Imagination ✨</Span>
       </HeadLine>
       <SearchBar
         search={search}

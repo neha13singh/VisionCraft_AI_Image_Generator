@@ -18,6 +18,10 @@
     "express": "^4.21.1",
     "mongoose": "^8.7.2",
     "nodemon": "^3.1.7",
-    "openai": "^4.0.0"
+    "openai": "^4.0.0",
+    "@mui/material": "^5.x.x",
+    "@mui/icons-material": "^5.x.x",
+    "@emotion/react": "^11.x.x",
+    "@emotion/styled": "^11.x.x"
   }
 }

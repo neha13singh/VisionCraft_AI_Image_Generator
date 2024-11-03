@@ -7,12 +7,14 @@ import Button from "../buttons/button";
 import { CreatePost, GenerateImageFromPrompt } from "../../api";
 
 const Form = styled.div`
-  flex: 1;
-  padding: 16px 20px;
+  width: 100%;
+  padding: 32px;
   display: flex;
   flex-direction: column;
-  gap: 9%;
-  justify-content: center;
+  gap: 32px;
+  background: ${({ theme }) => theme.card};
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 `;
 
 const Top = styled.div`
@@ -22,9 +24,14 @@ const Top = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 28px;
-  font-weight: 500;
+  font-size: 32px;
+  font-weight: 700;
   color: ${({ theme }) => theme.text_primary};
+  span {
+    background: linear-gradient(135deg, ${({ theme }) => theme.primary}, ${({ theme }) => theme.secondary});
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `;
 
 const Desc = styled.div`
@@ -60,20 +67,33 @@ const GenerateImage = ({
   const [error, setError] = useState("");
 
   const generateImage = async () => {
-    setGenerateImageLoading(true);
-    setError("");
-    await GenerateImageFromPrompt({ prompt: post.prompt })
-      .then((res) => {
-        setPost({
-          ...post,
-          photo: `data:image/jpeg;base64,${res?.data?.photo}`,
-        });
-        setGenerateImageLoading(false);
-      })
-      .catch((error) => {
-        setError(error?.response?.data?.message);
-        setGenerateImageLoading(false);
+    try {
+      setGenerateImageLoading(true);
+      setError("");
+      
+      if (!post.prompt.trim()) {
+        setError("Please enter a prompt");
+        return;
+      }
+
+      console.log('🎨 Generating image with prompt:', post.prompt);
+      const response = await GenerateImageFromPrompt({ prompt: post.prompt });
+      
+      if (!response?.data?.photo) {
+        throw new Error("No image data received");
+      }
+
+      console.log('✅ Image generated successfully');
+      setPost({
+        ...post,
+        photo: `data:image/jpeg;base64,${response.data.photo}`,
       });
+    } catch (error) {
+      console.error('❌ Image generation error:', error);
+      setError(error?.response?.data?.message || "Failed to generate image");
+    } finally {
+      setGenerateImageLoading(false);
+    }
   };
   const createPost = async () => {
     try {
@@ -105,7 +125,9 @@ const GenerateImage = ({
   return (
     <Form>
       <Top>
-        <Title>Generate Image with prompt</Title>
+        <Title>
+          Forge Your <span>Imagination</span>
+        </Title>
         <Desc>
           Write your prompt according to the image you want to generate!
         </Desc>
