@@ -14,11 +14,13 @@ const openai = new OpenAI({
 export const generateImage = async (req, res, next) => {
   try {
     const { prompt } = req.body;
+    console.log('📝 Received prompt:', prompt);
     
     if (!prompt) {
       return next(createError(400, "Prompt is required"));
     }
 
+    console.log('🔄 Calling OpenAI API...');
     const response = await openai.images.generate({
       prompt,
       n: 1,
@@ -26,11 +28,16 @@ export const generateImage = async (req, res, next) => {
       response_format: "b64_json",
     });
     
+    console.log('✅ OpenAI response received');
+    
     if (!response.data || !response.data[0]) {
+      console.error('❌ No image data in response');
       return next(createError(500, "Failed to generate image"));
     }
 
     const generatedImage = response.data[0].b64_json;
+    console.log('🖼️ Image generated successfully');
+    
     res.status(200).json({ photo: generatedImage });
   } catch (error) {
     console.error('OpenAI Error:', error);

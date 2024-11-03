@@ -4,28 +4,24 @@ import GenerateImage from "../components/form/GenerateImage";
 import GeneratedImageCard from "../components/cards/GeneratedImageCard";
 
 const Container = styled.div`
-  padding: 20px 30px;
-  padding-bottom: 50px;
+  padding: 40px 0;
   height: 100%;
-  justify-content: center;
-  align-items: center;
   overflow-y: scroll;
-  display: flex;
-  gap: 20px;
-  @media (max-width: 768px) {
-    padding: 6px 10px;
-  }
-  background: ${({ theme }) => theme.background};
+  background: ${({ theme }) => theme.bg};
+  width: 100%;
 `;
 
 const Wrapper = styled.div`
-  display: flex;
-  gap: 8%;
-  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
   max-width: 1200px;
-  height: fit-content;
-  @media (max-width: 768px) {
-    flex-direction: column;
+  margin: 0 auto;
+  padding: 0 5%;
+  
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 `;
 

@@ -20,22 +20,14 @@ API.interceptors.request.use(
   }
 );
 
-// Add response interceptor
+// Add response interceptor for debugging
 API.interceptors.response.use(
   response => {
-    console.log('✅ Request successful:', response.config.url);
+    console.log('✅ API Response:', response.config.url, response.data);
     return response;
   },
   error => {
-    if (error.code === 'ECONNABORTED') {
-      console.error('⏰ Request timeout');
-      return Promise.reject({
-        response: {
-          data: { message: 'Request took too long. Please try again.' }
-        }
-      });
-    }
-    console.error('❌ Request failed:', error.response?.data || error.message);
+    console.error('❌ API Error:', error.config.url, error.response?.data);
     return Promise.reject(error);
   }
 );
