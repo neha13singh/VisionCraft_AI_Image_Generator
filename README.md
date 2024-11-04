@@ -26,9 +26,6 @@ VisionCraft is a powerful AI-powered image generation platform that transforms y
 - 📱 Responsive design
 - 🌓 Dark/Light theme support
 
-## 🎥 Demo
-
-[Watch Demo Video](demo-video-link)
 
 ## 🚀 Tech Stack
 
@@ -48,7 +45,7 @@ VisionCraft is a powerful AI-powered image generation platform that transforms y
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/visioncraft.git
+(https://github.com/neha13singh/VisionCraft_AI_Image_Generator.git)
 cd visioncraft
 ```
 
