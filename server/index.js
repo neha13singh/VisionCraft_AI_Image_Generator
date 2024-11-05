@@ -58,7 +58,7 @@ const connectDB = async () => {
 const startServer = async () => {
   try {
     await connectDB();
-    const PORT = process.env.PORT || 5000; // fallback to 5000 if PORT not set
+    const PORT = process.env.PORT || 8080; // fallback to 8080 if PORT not set
     app.listen(PORT, () => {
       console.log(`🚀 Server started on port ${PORT}`);
     });

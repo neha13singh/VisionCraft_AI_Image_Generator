@@ -63,9 +63,12 @@ npm install
 3. Set up environment variables:
 ```bash
 # In server/.env
-MONGODB_URL=your_mongodb_url
-OPENAI_API_KEY=your_openai_api_key
-PORT=8080
+MONGODB_URL="Your MongoDB Connection String"
+OPENAI_API_KEY="Your OpenAI API Key"
+CLOUDINARY_CLOUD_NAME="Your Cloudinary Cloud Name"
+CLOUDINARY_API_KEY="Your Cloudinary API Key"
+CLOUDINARY_API_SECRET="Your Cloudinary API Secret"
+PORT=5000
 ```
 
 4. Start the development servers:
