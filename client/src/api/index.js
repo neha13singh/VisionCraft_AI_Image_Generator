@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: `http://localhost:${process.env.PORT || 5000}/api/`,
+  baseURL: process.env.REACT_APP_API_URL || 'https://visioncraft-ai-image-generator-server.onrender.com/api',
   timeout: 120000,
   headers: {
     'Content-Type': 'application/json'
