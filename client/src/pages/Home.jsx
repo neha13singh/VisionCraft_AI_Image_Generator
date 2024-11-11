@@ -131,7 +131,7 @@ const Home = () => {
   return (
     <Container>
       <HeadLine>
-        Welcome to <span>ImageForge</span>
+        Welcome to <span>VisionCraft</span>
         <Span>Where AI Meets Imagination ✨</Span>
       </HeadLine>
       <SearchBar
