@@ -126,7 +126,7 @@ const GenerateImage = ({
     <Form>
       <Top>
         <Title>
-          Forge Your <span>Imagination</span>
+          Craft Your <span>Imagination</span>
         </Title>
         <Desc>
           Write your prompt according to the image you want to generate!
