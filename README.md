@@ -31,7 +31,6 @@ VisionCraft is a powerful AI-powered image generation platform that transforms y
 
 - **Frontend:**
   - React.js
-  - Styled Components
   - Material-UI
   - Axios
 
