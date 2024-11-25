@@ -24,7 +24,7 @@ VisionCraft is a powerful AI-powered image generation platform that transforms y
 - 🖼️ Community gallery showcase
 - 🔍 Search functionality
 - 📱 Responsive design
-- 🌓 Dark/Light theme support
+  
 
 
 ## 🚀 Tech Stack
